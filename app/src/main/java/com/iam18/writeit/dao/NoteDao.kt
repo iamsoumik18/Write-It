@@ -8,7 +8,7 @@ import com.iam18.writeit.entities.Notes
 interface NoteDao {
 
     @Query("SELECT * FROM notes ORDER BY id DESC")
-    suspend fun getAllNotes() : LiveData<List<Notes>>
+    fun getAllNotes() : LiveData<List<Notes>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertNotes(note: Notes)
