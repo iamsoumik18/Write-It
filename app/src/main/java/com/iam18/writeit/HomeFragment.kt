@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.iam18.writeit.adapter.NotesAdapter
 import com.iam18.writeit.database.NotesDatabase
+import com.iam18.writeit.entities.Notes
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
 
 
 class HomeFragment : BaseFragment() {
+
+    var arrNotes = ArrayList<Notes>()
+    var notesAdapter: NotesAdapter = NotesAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,13 +51,31 @@ class HomeFragment : BaseFragment() {
         launch {
             context?. let{
                 var notes = NotesDatabase.getDatabase(it).noteDao().getAllNotes()
-                recycler_view.adapter = NotesAdapter(notes)
+                notesAdapter!!.setData(notes)
+                arrNotes = notes as ArrayList<Notes>
+                recycler_view.adapter = notesAdapter
             }
         }
+
+        notesAdapter!!.setOnClickListener(onClicked)
 
         fabBtnCreateNote.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(),false)
         }
+    }
+
+    private val onClicked = object :NotesAdapter.OnItemClickListener{
+        override fun onClicked(notesId: Int) {
+
+            var fragment :Fragment
+            var bundle = Bundle()
+            bundle.putInt("noteId",notesId)
+            fragment = CreateNoteFragment.newInstance()
+            fragment.arguments = bundle
+
+            replaceFragment(fragment,false)
+        }
+
     }
 
     fun replaceFragment(fragment:Fragment, istransition:Boolean){

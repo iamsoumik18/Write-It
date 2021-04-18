@@ -17,9 +17,11 @@ import java.util.*
 class CreateNoteFragment : BaseFragment() {
 
     var currentDate:String? = null
+    private var noteId = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        noteId = requireArguments().getInt("noteId",-1)
         arguments?.let {
         }
     }
@@ -44,6 +46,18 @@ class CreateNoteFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (noteId != -1){
+            launch{
+                context?.let {
+                    var notes = NotesDatabase.getDatabase(it).noteDao().getSpecificNote(noteId)
+                    etNoteTitle.setText(notes.title)
+                    etNoteSubTitle.setText(notes.subTitle)
+                    etNoteDesc.setText(notes.noteText)
+                }
+            }
+        }
+
         val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm a")
         currentDate = sdf.format(Date())
         tvDateTime.text = currentDate

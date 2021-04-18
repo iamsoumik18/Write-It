@@ -9,8 +9,10 @@ import com.iam18.writeit.R
 import com.iam18.writeit.entities.Notes
 import kotlinx.android.synthetic.main.item_notes.view.*
 
-class NotesAdapter(val arrList: List<Notes>):
+class NotesAdapter():
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>(){
+    var listener:OnItemClickListener? = null
+    var arrList = ArrayList<Notes>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         return NotesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_notes,parent,false)
@@ -26,9 +28,25 @@ class NotesAdapter(val arrList: List<Notes>):
         holder.itemView.tvDesc.text = arrList[position].noteText
         holder.itemView.tvDateTime.text = arrList[position].dateTime
 
+        holder.itemView.cardView.setOnClickListener {
+            listener!!.onClicked(arrList[position].id!!)
+        }
+
+    }
+
+    fun setData(arrNotesList: List<Notes>){
+        arrList = arrNotesList as ArrayList<Notes>
+    }
+
+    fun setOnClickListener(listener1: OnItemClickListener){
+        listener = listener1
     }
 
     class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
+    }
+
+    interface OnItemClickListener{
+        fun onClicked(noteId:Int)
     }
 }
