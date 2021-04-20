@@ -59,6 +59,11 @@ class HomeFragment : BaseFragment() {
 
         notesAdapter!!.setOnClickListener(onClicked)
 
+        abouth1.setOnClickListener{
+            var popUp = AboutPopUpFragment.newInstance()
+            popUp.show(requireActivity().supportFragmentManager,"About Fragment")
+        }
+
         fabBtnCreateNote.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(),false)
         }

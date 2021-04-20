@@ -7,9 +7,14 @@
     android:background="#050505"
     tools:context=".MainActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
     <TextView
         android:id="@+id/tv1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="My Notes"
         android:textSize="@dimen/_15ssp"
@@ -17,8 +22,20 @@
         android:paddingStart="@dimen/_16sdp"
         android:paddingTop="@dimen/_10sdp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/abouth1"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:background="@drawable/ic_info"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginRight="@dimen/_12sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <SearchView
         android:layout_width="match_parent"
@@ -30,7 +47,7 @@
         android:queryBackground="@android:color/transparent"
         android:theme="@style/ThemeOverlay.Search"
         android:searchIcon="@drawable/ic_search"
-        app:layout_constraintTop_toBottomOf="@id/tv1"
+        app:layout_constraintTop_toBottomOf="@id/topPanel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/search_view"/>
