@@ -1,11 +1,16 @@
 package com.iam18.writeit
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.iam18.writeit.database.NotesDatabase
 import com.iam18.writeit.entities.Notes
 import kotlinx.android.synthetic.main.fragment_create_note.*
@@ -58,6 +63,10 @@ class CreateNoteFragment : BaseFragment() {
             }
         }
 
+        LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
+                BroadcastReceiver, IntentFilter("bottom_sheet_action")
+        )
+
         val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm a")
         currentDate = sdf.format(Date())
         tvDateTime.text = currentDate
@@ -68,6 +77,11 @@ class CreateNoteFragment : BaseFragment() {
 
         imgBack.setOnClickListener{
             requireActivity().supportFragmentManager.popBackStack()
+        }
+
+        imgMore.setOnClickListener{
+            var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
+            noteBottomSheetFragment.show(requireActivity().supportFragmentManager,"Note Bottom Sheet Fragment")
         }
     }
 
@@ -104,4 +118,42 @@ class CreateNoteFragment : BaseFragment() {
             }
         }
     }
+
+    private fun deleteNote(){
+
+        launch {
+            context?.let {
+                NotesDatabase.getDatabase(it).noteDao().deleteSpecificNote(noteId)
+                requireActivity().supportFragmentManager.popBackStack()
+            }
+        }
+    }
+
+    private val BroadcastReceiver : BroadcastReceiver = object :BroadcastReceiver(){
+        override fun onReceive(p0: Context?, p1: Intent?) {
+
+            var actionColor = p1!!.getStringExtra("action")
+
+            when(actionColor!!){
+
+                "DeleteNote" -> {
+                    //delete note
+                    deleteNote()
+                }
+
+            }
+        }
+
+    }
+
+
+    override fun onDestroy() {
+
+        LocalBroadcastManager.getInstance(requireContext()).unregisterReceiver(BroadcastReceiver)
+        super.onDestroy()
+
+
+    }
+
+
 }
