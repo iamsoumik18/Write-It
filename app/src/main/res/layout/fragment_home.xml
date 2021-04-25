@@ -16,7 +16,7 @@
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="My Notes"
+        android:text="Write It"
         android:textSize="@dimen/_15ssp"
         android:textColor="#ffffff"
         android:paddingStart="@dimen/_16sdp"

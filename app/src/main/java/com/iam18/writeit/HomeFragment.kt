@@ -85,7 +85,7 @@ class HomeFragment : BaseFragment() {
 
         search_view.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
-                
+
                 var tempArr = ArrayList<Notes>()
 
                 for (arr in arrNotes){
