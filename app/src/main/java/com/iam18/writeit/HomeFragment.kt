@@ -71,18 +71,6 @@ class HomeFragment : BaseFragment() {
             replaceFragment(CreateNoteFragment.newInstance(),false)
         }
 
-        tick.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(),false)
-        }
-
-        img.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(),false)
-        }
-
-        link.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(),false)
-        }
-
         search_view.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
 

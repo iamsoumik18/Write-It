@@ -1,9 +1,9 @@
 package com.iam18.writeit.adapter
 
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.iam18.writeit.R
 import com.iam18.writeit.entities.Notes
@@ -27,6 +27,13 @@ class NotesAdapter():
         holder.itemView.tvTitle.text = arrList[position].title
         holder.itemView.tvDesc.text = arrList[position].noteText
         holder.itemView.tvDateTime.text = arrList[position].dateTime
+
+        if (arrList[position].imgPath != null){
+            holder.itemView.imgNote.setImageBitmap(BitmapFactory.decodeFile(arrList[position].imgPath))
+            holder.itemView.imgNote.visibility = View.VISIBLE
+        }else{
+            holder.itemView.imgNote.visibility = View.GONE
+        }
 
         holder.itemView.cardView.setOnClickListener {
             listener!!.onClicked(arrList[position].id!!)

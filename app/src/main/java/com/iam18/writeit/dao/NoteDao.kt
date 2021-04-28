@@ -1,6 +1,5 @@
 package com.iam18.writeit.dao
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.iam18.writeit.entities.Notes
 
