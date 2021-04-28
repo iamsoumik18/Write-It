@@ -85,7 +85,7 @@ class HomeFragment : BaseFragment() {
                     notesAdapter.setData(tempArr)
                     notesAdapter.notifyDataSetChanged()
                 }else{
-                    Toast.makeText(requireActivity(), "SORRY!!! NOTE NOT FOUND.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), "Sorry!!! Note not found", Toast.LENGTH_SHORT).show()
                 }
                 return false
             }
