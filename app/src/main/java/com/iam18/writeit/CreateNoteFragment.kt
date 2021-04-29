@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -22,6 +21,7 @@ import java.util.*
 import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.net.Uri
+import com.bumptech.glide.Glide
 import pub.devrel.easypermissions.AppSettingsDialog
 
 
@@ -69,7 +69,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                     etNoteDesc.setText(notes.noteText)
                     if (notes.imgPath != ""){
                         selectedImagePath = notes.imgPath!!
-                        imgNote.setImageBitmap(BitmapFactory.decodeFile(notes.imgPath))
+                        Glide.with(view).load(notes.imgPath).into(imgNote)
                         layoutImage.visibility = View.VISIBLE
                         imgNote.visibility = View.VISIBLE
                         imgDelete.visibility = View.VISIBLE
@@ -153,7 +153,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         launch {
             context?.let {
                 NotesDatabase.getDatabase(it).noteDao().deleteSpecificNote(noteId)
-                Toast.makeText(requireActivity(), "Note Deleted", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), "Note Deleted.", Toast.LENGTH_SHORT).show()
                 requireActivity().supportFragmentManager.popBackStack()
             }
         }
@@ -235,9 +235,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 var selectedImageUrl = data.data
                 if (selectedImageUrl != null){
                     try {
-                        var inputStream = requireActivity().contentResolver.openInputStream(selectedImageUrl)
-                        var bitmap = BitmapFactory.decodeStream(inputStream)
-                        imgNote.setImageBitmap(bitmap)
+                        Glide.with(this).load(getPathFromUri(selectedImageUrl)).override(1280,720).into(imgNote)
                         imgNote.visibility = View.VISIBLE
                         layoutImage.visibility = View.VISIBLE
 

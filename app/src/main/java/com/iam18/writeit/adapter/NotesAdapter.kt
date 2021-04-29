@@ -1,13 +1,14 @@
 package com.iam18.writeit.adapter
 
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.iam18.writeit.R
 import com.iam18.writeit.entities.Notes
 import kotlinx.android.synthetic.main.item_notes.view.*
+
 
 class NotesAdapter():
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>(){
@@ -15,7 +16,12 @@ class NotesAdapter():
     var arrList = ArrayList<Notes>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
-        return NotesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_notes,parent,false)
+        return NotesViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_notes,
+                parent,
+                false
+            )
         )
     }
 
@@ -29,7 +35,7 @@ class NotesAdapter():
         holder.itemView.tvDateTime.text = arrList[position].dateTime
 
         if (arrList[position].imgPath != null){
-            holder.itemView.imgNote.setImageBitmap(BitmapFactory.decodeFile(arrList[position].imgPath))
+            Glide.with(holder.itemView.context).load(arrList[position].imgPath).override(1280,720).into(holder.itemView.imgNote)
             holder.itemView.imgNote.visibility = View.VISIBLE
         }else{
             holder.itemView.imgNote.visibility = View.GONE
@@ -54,6 +60,6 @@ class NotesAdapter():
     }
 
     interface OnItemClickListener{
-        fun onClicked(noteId:Int)
+        fun onClicked(noteId: Int)
     }
 }
