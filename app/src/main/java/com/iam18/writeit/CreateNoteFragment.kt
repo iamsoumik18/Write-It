@@ -21,6 +21,7 @@ import java.util.*
 import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.net.Uri
+import android.util.Patterns
 import com.bumptech.glide.Glide
 import pub.devrel.easypermissions.AppSettingsDialog
 
@@ -32,6 +33,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
     private var READ_STORAGE_PERM = 123
     private var REQUEST_CODE_IMAGE = 456
     private var selectedImagePath = ""
+    private var webLink = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -78,6 +80,16 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                         imgNote.visibility = View.GONE
                         imgDelete.visibility = View.GONE
                     }
+                    if (notes.webLink != ""){
+                        webLink = notes.webLink!!
+                        tvWebLink.text = notes.webLink
+                        layoutWebUrl.visibility = View.VISIBLE
+                        etWebLink.setText(notes.webLink)
+                        imgUrlDelete.visibility = View.VISIBLE
+                    }else{
+                        imgUrlDelete.visibility = View.GONE
+                        layoutWebUrl.visibility = View.GONE
+                    }
                 }
             }
         }
@@ -109,6 +121,36 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
 
         }
 
+        btnOk.setOnClickListener {
+            if (etWebLink.text.toString().trim().isNotEmpty()){
+                checkWebUrl()
+            }else{
+                Toast.makeText(requireContext(),"Url is Required.",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        btnCancel.setOnClickListener {
+            if (noteId != -1){
+                tvWebLink.visibility = View.VISIBLE
+                layoutWebUrl.visibility = View.GONE
+            }else{
+                layoutWebUrl.visibility = View.GONE
+            }
+
+        }
+
+        imgUrlDelete.setOnClickListener {
+            webLink = ""
+            tvWebLink.visibility = View.GONE
+            imgUrlDelete.visibility = View.GONE
+            layoutWebUrl.visibility = View.GONE
+        }
+
+        tvWebLink.setOnClickListener {
+            var intent = Intent(Intent.ACTION_VIEW,Uri.parse(etWebLink.text.toString()))
+            startActivity(intent)
+        }
+
     }
 
     private fun saveNote(){
@@ -135,6 +177,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 notes.noteText = etNoteDesc.text.toString()
                 notes.dateTime = currentDate
                 notes.imgPath = selectedImagePath
+                notes.webLink = webLink
                 context?.let {
                     NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
                     etNoteTitle.setText("")
@@ -142,6 +185,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                     etNoteDesc.setText("")
                     layoutImage.visibility = View.GONE
                     imgNote.visibility = View.GONE
+                    tvWebLink.visibility = View.GONE
                     requireActivity().supportFragmentManager.popBackStack()
                 }
             }
@@ -159,6 +203,18 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }
     }
 
+    private fun checkWebUrl(){
+        if (Patterns.WEB_URL.matcher(etWebLink.text.toString()).matches()){
+            layoutWebUrl.visibility = View.GONE
+            etWebLink.isEnabled = false
+            webLink = etWebLink.text.toString()
+            tvWebLink.visibility = View.VISIBLE
+            tvWebLink.text = etWebLink.text.toString()
+        }else{
+            Toast.makeText(requireContext(),"Url is not valid.",Toast.LENGTH_SHORT).show()
+        }
+    }
+
     private val BroadcastReceiver : BroadcastReceiver = object :BroadcastReceiver(){
         override fun onReceive(p0: Context?, p1: Intent?) {
 
@@ -170,6 +226,10 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                     readStorageTask()
                 }
 
+                "WebUrl" ->{
+                    layoutWebUrl.visibility = View.VISIBLE
+                }
+
                 "DeleteNote" -> {
                     deleteNote()
                 }
@@ -177,6 +237,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 else -> {
                     layoutImage.visibility = View.GONE
                     imgNote.visibility = View.GONE
+                    layoutWebUrl.visibility = View.GONE
                 }
 
             }
