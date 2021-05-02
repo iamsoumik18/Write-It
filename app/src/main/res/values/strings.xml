@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">Write It</string>
-    <string name="app_desc">This is a note taking app where you can store, update and search your notes, highlight your texts, add url and images of your comfort.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_desc">This is a note taking app where you can store, search and update your notes, add url and images of your comfort.</string>
 </resources>

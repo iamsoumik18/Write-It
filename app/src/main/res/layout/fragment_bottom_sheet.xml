@@ -94,7 +94,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
-            android:text="Add Web Link"
+            android:text="Add URL"
             android:maxLines="1"
             android:ellipsize="end"
             />
