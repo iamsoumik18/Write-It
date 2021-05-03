@@ -34,10 +34,12 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
     private var REQUEST_CODE_IMAGE = 456
     private var selectedImagePath = ""
     private var webLink = ""
+    private var qaK: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         noteId = requireArguments().getInt("noteId",-1)
+        qaK = requireArguments().getString("qaCall","none")
         arguments?.let {
         }
     }
@@ -92,6 +94,14 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                     }
                 }
             }
+        }
+
+        if(qaK=="img"){
+            readStorageTask()
+        }
+
+        if(qaK=="lnk"){
+            layoutWebUrl.visibility = View.VISIBLE
         }
 
         LocalBroadcastManager.getInstance(requireContext()).registerReceiver(
@@ -292,7 +302,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }else{
             EasyPermissions.requestPermissions(
                     requireActivity(),
-                    "This app needs access to your storage.",
+                    "This app needs access to your storage to add images.",
                     READ_STORAGE_PERM,
                     Manifest.permission.READ_EXTERNAL_STORAGE
             )

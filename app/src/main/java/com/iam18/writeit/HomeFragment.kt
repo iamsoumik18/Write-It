@@ -1,5 +1,6 @@
 package com.iam18.writeit
 
+import android.Manifest
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.iam18.writeit.database.NotesDatabase
 import com.iam18.writeit.entities.Notes
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
+import pub.devrel.easypermissions.EasyPermissions
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -22,6 +24,7 @@ class HomeFragment : BaseFragment() {
 
     var arrNotes = ArrayList<Notes>()
     var notesAdapter: NotesAdapter = NotesAdapter()
+    private var READ_STORAGE_PERM = 123
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +58,12 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        EasyPermissions.requestPermissions(
+                requireActivity(),
+                "This app needs access to your storage to add images.",
+                READ_STORAGE_PERM,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+
         recycler_view.setHasFixedSize(true)
         recycler_view.layoutManager = StaggeredGridLayoutManager(
             2,
@@ -77,8 +86,20 @@ class HomeFragment : BaseFragment() {
             popUp.show(requireActivity().supportFragmentManager, "About Fragment")
         }
 
+        qaAdd.setOnClickListener{
+            replaceFragment(CreateNoteFragment.newInstance(), false, "ad")
+        }
+
+        qaImage.setOnClickListener {
+            replaceFragment(CreateNoteFragment.newInstance(), false, "img")
+        }
+
+        qaLink.setOnClickListener {
+            replaceFragment(CreateNoteFragment.newInstance(), false, "lnk")
+        }
+
         fabBtnCreateNote.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(), false)
+            replaceFragment(CreateNoteFragment.newInstance(), false, "ad")
         }
 
         search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -129,13 +150,18 @@ class HomeFragment : BaseFragment() {
             fragment = CreateNoteFragment.newInstance()
             fragment.arguments = bundle
 
-            replaceFragment(fragment, false)
+            val fragmentTransition = activity!!.supportFragmentManager.beginTransaction()
+            fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName).commit()
         }
 
     }
 
-    fun replaceFragment(fragment: Fragment, istransition: Boolean){
+    private fun replaceFragment(fragment: Fragment, istransition: Boolean, st: String){
         val fragmentTransition = activity!!.supportFragmentManager.beginTransaction()
+
+        val bdl = Bundle()
+        bdl.putString("qaCall", st)
+        fragment.arguments = bdl
 
         if (istransition){
             fragmentTransition.setCustomAnimations(
