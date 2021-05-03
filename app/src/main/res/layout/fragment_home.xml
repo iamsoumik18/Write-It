@@ -4,30 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#050505"
-    tools:context=".MainActivity">
+    android:background="@color/mainBack"
+    tools:context=".activities.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topPanel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
-    <TextView
-        android:id="@+id/tv1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Write It"
-        android:textSize="@dimen/_15ssp"
-        android:textColor="#ffffff"
-        android:paddingStart="@dimen/_16sdp"
-        android:paddingTop="@dimen/_10sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/ubuntu_bold"
+            android:paddingStart="@dimen/_16sdp"
+            android:paddingTop="@dimen/_10sdp"
+            android:text="Write It"
+            android:textColor="@color/textColor1"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/abouth1"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_width="@dimen/_26sdp"
+            android:layout_height="@dimen/_26sdp"
             android:background="@drawable/ic_info"
             android:layout_marginTop="@dimen/_6sdp"
             android:layout_marginRight="@dimen/_12sdp"
@@ -75,33 +77,30 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="#151515"
+        android:background="@color/cardBack"
         android:padding="@dimen/_10sdp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/qaAdd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
             android:layout_marginStart="@dimen/_7sdp"
-            android:src="@drawable/ic_add_circle_outline"
-            app:tint="@color/white" />
+            android:src="@drawable/ic_add_circle_outline" />
 
         <ImageView
             android:id="@+id/qaImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
             android:src="@drawable/ic_image"
             android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_20sdp"
-            app:tint="@color/white" />
+            android:layout_marginEnd="@dimen/_20sdp" />
 
         <ImageView
             android:id="@+id/qaLink"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_link"
-            app:tint="@color/white" />
+            android:layout_width="@dimen/_23sdp"
+            android:layout_height="@dimen/_23sdp"
+            android:src="@drawable/ic_link" />
 
 
     </LinearLayout>
@@ -110,11 +109,12 @@
         android:id="@+id/fabBtnCreateNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:fabCustomSize="@dimen/_45sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_20sdp"
         android:src="@drawable/ic_add"
-        app:backgroundTint="#0eb49e"
-        app:tint="#FFFFFF"
+        app:backgroundTint="@color/appTheme"
+        app:tint="@color/iconTint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

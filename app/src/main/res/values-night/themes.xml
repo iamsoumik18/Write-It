@@ -2,19 +2,19 @@
     <!-- Base application theme. -->
     <style name="Theme.WriteIt" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#0eb48e</item>
-        <item name="colorPrimaryVariant">#0eb49e</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">#ffc661</item>
+        <item name="colorPrimaryVariant">#fdad13</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondary">#e39e4e</item>
+        <item name="colorSecondaryVariant">#dd8f42</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
     <style name="ThemeOverlay.Search" parent="Theme.WriteIt">
-        <item name="android:editTextColor">@color/white</item>
-        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:editTextColor">@color/textColor1</item>
+        <item name="android:textColorHint">@color/textColor3</item>
     </style>
 </resources>

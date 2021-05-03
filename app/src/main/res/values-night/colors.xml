@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">#CACACA</color>
+    <color name="splashBack">#474747</color>
+    <color name="appTheme">#ffc661</color>
+    <color name="mainBack">#292929</color>
+    <color name="cardBack">#333333</color>
+    <color name="splashFont1">#ffc661</color>
+    <color name="splashFont2">#828282</color>
+    <color name="splashFont3">#929292</color>
+    <color name="textColor1">#ffffff</color>
+    <color name="textColor2">#aeaeae</color>
+    <color name="textColor3">#d3d3d3</color>
+    <color name="iconTint">#ffffff</color>
+</resources>

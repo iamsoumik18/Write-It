@@ -1,4 +1,4 @@
-package com.iam18.writeit
+package com.iam18.writeit.fragments
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -23,6 +23,7 @@ import android.app.Activity.RESULT_OK
 import android.net.Uri
 import android.util.Patterns
 import com.bumptech.glide.Glide
+import com.iam18.writeit.R
 import pub.devrel.easypermissions.AppSettingsDialog
 
 
@@ -124,7 +125,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             requireActivity().supportFragmentManager.popBackStack()
         }
 
-        imgMore.setOnClickListener{
+        imgMoreFrame.setOnClickListener{
             var noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
             noteBottomSheetFragment.show(requireActivity().supportFragmentManager,"Note Bottom Sheet Fragment")
         }
@@ -170,16 +171,16 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
     private fun saveNote(){
 
         if (etNoteTitle.text.isNullOrEmpty()){
-            Toast.makeText(context,"Note Title is Required",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Note Title is Required.",Toast.LENGTH_SHORT).show()
         }
         else if (etNoteSubTitle.text.isNullOrEmpty()){
 
-            Toast.makeText(context,"Note Sub Title is Required",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Note Sub Title is Required.",Toast.LENGTH_SHORT).show()
         }
 
         else if (etNoteDesc.text.isNullOrEmpty()){
 
-            Toast.makeText(context,"Note Description is Required",Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"Note Description is Required.",Toast.LENGTH_SHORT).show()
         }
 
         else{

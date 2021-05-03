@@ -1,4 +1,4 @@
-package com.iam18.writeit
+package com.iam18.writeit.fragments
 
 import android.Manifest
 import android.os.Bundle
@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.iam18.writeit.R
 import com.iam18.writeit.adapter.NotesAdapter
 import com.iam18.writeit.database.NotesDatabase
 import com.iam18.writeit.entities.Notes
@@ -87,19 +88,19 @@ class HomeFragment : BaseFragment() {
         }
 
         qaAdd.setOnClickListener{
-            replaceFragment(CreateNoteFragment.newInstance(), false, "ad")
+            replaceFragment(CreateNoteFragment.newInstance(), "ad")
         }
 
         qaImage.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(), false, "img")
+            replaceFragment(CreateNoteFragment.newInstance(), "img")
         }
 
         qaLink.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(), false, "lnk")
+            replaceFragment(CreateNoteFragment.newInstance(), "lnk")
         }
 
         fabBtnCreateNote.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(), false, "ad")
+            replaceFragment(CreateNoteFragment.newInstance(), "ad")
         }
 
         search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -156,19 +157,13 @@ class HomeFragment : BaseFragment() {
 
     }
 
-    private fun replaceFragment(fragment: Fragment, istransition: Boolean, st: String){
+    private fun replaceFragment(fragment: Fragment, st: String){
         val fragmentTransition = activity!!.supportFragmentManager.beginTransaction()
 
         val bdl = Bundle()
         bdl.putString("qaCall", st)
         fragment.arguments = bdl
 
-        if (istransition){
-            fragmentTransition.setCustomAnimations(
-                android.R.anim.slide_out_right,
-                android.R.anim.slide_in_left
-            )
-        }
         fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName).commit()
     }
 

@@ -1,4 +1,4 @@
-package com.iam18.writeit
+package com.iam18.writeit.fragments
 
 import android.app.Dialog
 import android.content.Intent
@@ -10,13 +10,14 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.iam18.writeit.R
 import kotlinx.android.synthetic.main.fragment_bottom_sheet.*
 
 class NoteBottomSheetFragment: BottomSheetDialogFragment() {
 
     companion object {
         var noteId = -1
-        fun newInstance(id:Int): NoteBottomSheetFragment{
+        fun newInstance(id:Int): NoteBottomSheetFragment {
             val args = Bundle()
             val fragment = NoteBottomSheetFragment()
             fragment.arguments = args
@@ -93,6 +94,10 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
     }
 
     private fun setListener(){
+
+        imgMoreFrame.setOnClickListener {
+            dismiss()
+        }
 
         layoutImage.setOnClickListener{
             val intent = Intent("bottom_sheet_action")

@@ -31,7 +31,7 @@ class NotesAdapter():
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         holder.itemView.tvTitle.text = arrList[position].title
-        holder.itemView.tvDesc.text = arrList[position].noteText
+        holder.itemView.tvSubTitle.text = arrList[position].subTitle
         holder.itemView.tvDateTime.text = arrList[position].dateTime
 
         if (arrList[position].imgPath != null){
@@ -39,13 +39,6 @@ class NotesAdapter():
             holder.itemView.imgNote.visibility = View.VISIBLE
         }else{
             holder.itemView.imgNote.visibility = View.GONE
-        }
-
-        if (arrList[position].webLink != ""){
-            holder.itemView.tvWebLink.text = arrList[position].webLink
-            holder.itemView.tvWebLink.visibility = View.VISIBLE
-        }else{
-            holder.itemView.tvWebLink.visibility = View.GONE
         }
 
         holder.itemView.cardView.setOnClickListener {

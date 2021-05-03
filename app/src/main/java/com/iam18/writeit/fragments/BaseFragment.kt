@@ -1,4 +1,4 @@
-package com.iam18.writeit
+package com.iam18.writeit.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

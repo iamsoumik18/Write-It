@@ -13,7 +13,7 @@
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_5sdp"
         android:layout_margin="@dimen/_5sdp"
-        app:cardBackgroundColor="#151515"
+        app:cardBackgroundColor="@color/cardBack"
         android:padding="@dimen/_5sdp">
 
         <LinearLayout
@@ -36,54 +36,45 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_15ssp"
                 android:text="My Note"
+                android:fontFamily="@font/ubuntu_bold"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingTop="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textColor="#fff"/>
+                android:textColor="@color/textColor1"/>
 
             <TextView
-                android:id="@+id/tvWebLink"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="@dimen/_10sdp"
-                android:paddingTop="@dimen/_6sdp"
-                android:paddingBottom="@dimen/_1sdp"
-                android:ellipsize="end"
-                android:text="Web Link"
-                android:visibility="gone"
-                android:textColor="@color/white"
-                android:textColorHint="@color/gray"
-                android:textSize="@dimen/_12ssp"
-                android:autoLink="web" />
-
-            <TextView
-                android:id="@+id/tvDesc"
+                android:id="@+id/tvSubTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_11ssp"
-                android:text="Description"
+                android:fontFamily="@font/ubuntu"
+                android:text="Subtitle"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingTop="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_5sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textColor="#fff"/>
+                android:textColor="@color/textColor1"/>
 
             <TextView
                 android:id="@+id/tvDateTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_9ssp"
+                android:fontFamily="@font/ubuntu"
                 android:text="dd/MM/yy hh:mm a"
                 android:paddingStart="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:textColor="#fff"/>
+                android:textColor="@color/textColor1"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
