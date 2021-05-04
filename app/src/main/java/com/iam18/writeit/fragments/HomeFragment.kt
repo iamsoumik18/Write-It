@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.iam18.writeit.R
@@ -25,7 +26,9 @@ class HomeFragment : BaseFragment() {
 
     var arrNotes = ArrayList<Notes>()
     var notesAdapter: NotesAdapter = NotesAdapter()
-    private var READ_STORAGE_PERM = 123
+    private var storagePermission = Manifest.permission.READ_EXTERNAL_STORAGE
+    private var recordPermission = Manifest.permission.RECORD_AUDIO
+    private var REQUEST_CODE = 12
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,11 +62,7 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        EasyPermissions.requestPermissions(
-                requireActivity(),
-                "This app needs access to your storage to add images.",
-                READ_STORAGE_PERM,
-                Manifest.permission.READ_EXTERNAL_STORAGE)
+        ActivityCompat.requestPermissions(requireActivity(), arrayOf(storagePermission,recordPermission), REQUEST_CODE)
 
         recycler_view.setHasFixedSize(true)
         recycler_view.layoutManager = StaggeredGridLayoutManager(
@@ -87,8 +86,8 @@ class HomeFragment : BaseFragment() {
             popUp.show(requireActivity().supportFragmentManager, "About Fragment")
         }
 
-        qaAdd.setOnClickListener{
-            replaceFragment(CreateNoteFragment.newInstance(), "ad")
+        qaMic.setOnClickListener{
+            replaceFragment(CreateNoteFragment.newInstance(), "mic")
         }
 
         qaImage.setOnClickListener {

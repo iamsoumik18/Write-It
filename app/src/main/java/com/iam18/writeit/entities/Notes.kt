@@ -26,6 +26,9 @@ class Notes: Serializable {
     @ColumnInfo(name="img_path")
     var imgPath:String? = null
 
+    @ColumnInfo(name="audio_path")
+    var audioPath:String? = null
+
     @ColumnInfo(name="web_link")
     var webLink:String? = null
 

@@ -113,6 +113,13 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
             dismiss()
         }
 
+        layoutAudio.setOnClickListener {
+            val intent = Intent("bottom_sheet_action")
+            intent.putExtra("action","Audio")
+            LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
+            dismiss()
+        }
+
         layoutDeleteNote.setOnClickListener {
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action","DeleteNote")

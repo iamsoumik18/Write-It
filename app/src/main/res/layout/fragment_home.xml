@@ -82,11 +82,11 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/qaAdd"
+            android:id="@+id/qaMic"
             android:layout_width="@dimen/_23sdp"
             android:layout_height="@dimen/_23sdp"
             android:layout_marginStart="@dimen/_7sdp"
-            android:src="@drawable/ic_add_circle_outline" />
+            android:src="@drawable/ic_mic" />
 
         <ImageView
             android:id="@+id/qaImage"
