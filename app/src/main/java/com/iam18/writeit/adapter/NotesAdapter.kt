@@ -1,5 +1,7 @@
 package com.iam18.writeit.adapter
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,10 +31,17 @@ class NotesAdapter():
         return arrList.size
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
         holder.itemView.tvTitle.text = arrList[position].title
         holder.itemView.tvSubTitle.text = arrList[position].subTitle
         holder.itemView.tvDateTime.text = arrList[position].dateTime
+
+        if (arrList[position].color != "null"){
+            holder.itemView.cardView.setBackgroundColor(Color.parseColor(arrList[position].color))
+        }else{
+            holder.itemView.cardView.setBackgroundColor(Color.TRANSPARENT)
+        }
 
         if (arrList[position].imgPath != null){
             Glide.with(holder.itemView.context).load(arrList[position].imgPath).override(1280,720).into(holder.itemView.imgNote)

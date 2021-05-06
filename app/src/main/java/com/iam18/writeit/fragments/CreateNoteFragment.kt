@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.net.Uri
@@ -39,6 +40,7 @@ import java.util.*
 
 class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,EasyPermissions.RationaleCallbacks {
 
+    var selectedColor = "null"
     var currentDate:String? = null
     private var noteId = -1
     private var READ_STORAGE_PERM = 123
@@ -89,6 +91,11 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             launch{
                 context?.let {
                     var notes = NotesDatabase.getDatabase(it).noteDao().getSpecificNote(noteId)
+                    if(notes.color!="null") {
+                        selectedColor = notes.color.toString()
+                        colorView.setBackgroundColor(Color.parseColor(notes.color))
+                        layoutPlayer2.setBackgroundColor(Color.parseColor(notes.color))
+                    }
                     etNoteTitle.setText(notes.title)
                     etNoteSubTitle.setText(notes.subTitle)
                     etNoteDesc.setText(notes.noteText)
@@ -336,6 +343,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 notes.subTitle = etNoteSubTitle.text.toString()
                 notes.noteText = etNoteDesc.text.toString()
                 notes.dateTime = currentDate
+                notes.color = selectedColor
                 notes.imgPath = selectedImagePath
                 notes.audioPath = selectedAudioPath
                 notes.webLink = webLink
@@ -365,6 +373,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 notes.subTitle = etNoteSubTitle.text.toString()
                 notes.noteText = etNoteDesc.text.toString()
                 notes.dateTime = currentDate
+                notes.color = selectedColor
                 notes.imgPath = selectedImagePath
                 notes.webLink = webLink
                 notes.audioPath = selectedAudioPath
@@ -495,6 +504,83 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
             var actionColor = p1!!.getStringExtra("action")
 
             when(actionColor!!){
+
+                "Orange" -> {
+                    if(selectedColor == p1.getStringExtra("selectedColor")){
+                        colorView.setBackgroundColor(Color.TRANSPARENT)
+                        layoutPlayer2.setBackgroundColor(Color.TRANSPARENT)
+                        selectedColor = "null"
+                    }else {
+                        selectedColor = p1.getStringExtra("selectedColor")!!
+                        colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                        layoutPlayer2.setBackgroundColor((Color.parseColor(selectedColor)))
+                    }
+
+                }
+
+                "Red" -> {
+                    if(selectedColor == p1.getStringExtra("selectedColor")){
+                        colorView.setBackgroundColor(Color.TRANSPARENT)
+                        layoutPlayer2.setBackgroundColor(Color.TRANSPARENT)
+                        selectedColor = "null"
+                    }else {
+                        selectedColor = p1.getStringExtra("selectedColor")!!
+                        colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                        layoutPlayer2.setBackgroundColor((Color.parseColor(selectedColor)))
+                    }
+                }
+
+
+                "Blue" -> {
+                    if(selectedColor == p1.getStringExtra("selectedColor")){
+                        colorView.setBackgroundColor(Color.TRANSPARENT)
+                        layoutPlayer2.setBackgroundColor(Color.TRANSPARENT)
+                        selectedColor = "null"
+                    }else {
+                        selectedColor = p1.getStringExtra("selectedColor")!!
+                        colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                        layoutPlayer2.setBackgroundColor((Color.parseColor(selectedColor)))
+                    }
+                }
+
+
+                "Green" -> {
+                    if(selectedColor == p1.getStringExtra("selectedColor")){
+                        colorView.setBackgroundColor(Color.TRANSPARENT)
+                        layoutPlayer2.setBackgroundColor(Color.TRANSPARENT)
+                        selectedColor = "null"
+                    }else {
+                        selectedColor = p1.getStringExtra("selectedColor")!!
+                        colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                        layoutPlayer2.setBackgroundColor((Color.parseColor(selectedColor)))
+                    }
+                }
+
+
+                "Purple" -> {
+                    if(selectedColor == p1.getStringExtra("selectedColor")){
+                        colorView.setBackgroundColor(Color.TRANSPARENT)
+                        layoutPlayer2.setBackgroundColor(Color.TRANSPARENT)
+                        selectedColor = "null"
+                    }else {
+                        selectedColor = p1.getStringExtra("selectedColor")!!
+                        colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                        layoutPlayer2.setBackgroundColor((Color.parseColor(selectedColor)))
+                    }
+                }
+
+
+                "Yellow" -> {
+                    if(selectedColor == p1.getStringExtra("selectedColor")){
+                        colorView.setBackgroundColor(Color.TRANSPARENT)
+                        layoutPlayer2.setBackgroundColor(Color.TRANSPARENT)
+                        selectedColor = "null"
+                    }else {
+                        selectedColor = p1.getStringExtra("selectedColor")!!
+                        colorView.setBackgroundColor(Color.parseColor(selectedColor))
+                        layoutPlayer2.setBackgroundColor((Color.parseColor(selectedColor)))
+                    }
+                }
 
                 "Image" -> {
                     readStorageTask()

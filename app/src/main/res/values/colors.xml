@@ -14,4 +14,12 @@
     <color name="textColor2">#555555</color>
     <color name="textColor3">#7b7b7b</color>
     <color name="iconTint">#2a2a2a</color>
+
+    <color name="noteColorOrange">#ffc661</color>
+    <color name="noteColorRed">#ff493e</color>
+    <color name="noteColorBlue">#3c50ff</color>
+    <color name="noteColorGreen">#00dc89</color>
+    <color name="noteColorPurple">#bb86fc</color>
+    <color name="noteColorYellow">#ffde03</color>
+    
 </resources>
