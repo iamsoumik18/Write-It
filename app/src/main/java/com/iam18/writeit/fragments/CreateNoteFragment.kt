@@ -306,7 +306,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
     private fun updateRunnable(){
         updateSeekBar = Runnable {
             seekbar.progress = mediaPlayer!!.currentPosition
-            seekBarHandler.postDelayed(updateSeekBar, 500)
+            seekBarHandler.postDelayed(updateSeekBar, 0)
         }
     }
 

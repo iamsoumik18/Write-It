@@ -65,11 +65,6 @@
                     android:layout_height="@dimen/_30sdp"
                     android:background="@drawable/note_color_1"/>
 
-                <ImageView
-                    android:id="@+id/imgNote1"
-                    android:layout_width="@dimen/_21sdp"
-                    android:layout_height="@dimen/_21sdp"
-                    android:layout_gravity="center" />
             </FrameLayout>
 
             <FrameLayout
@@ -82,11 +77,6 @@
                     android:layout_height="@dimen/_30sdp"
                     android:background="@drawable/note_color_2"/>
 
-                <ImageView
-                    android:id="@+id/imgNote2"
-                    android:layout_width="@dimen/_21sdp"
-                    android:layout_height="@dimen/_21sdp"
-                    android:layout_gravity="center"/>
             </FrameLayout>
 
                 <FrameLayout
@@ -99,11 +89,6 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@drawable/note_color_3"/>
 
-                    <ImageView
-                        android:id="@+id/imgNote3"
-                        android:layout_width="@dimen/_21sdp"
-                        android:layout_height="@dimen/_21sdp"
-                        android:layout_gravity="center"/>
                 </FrameLayout>
 
                 <FrameLayout
@@ -116,11 +101,6 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@drawable/note_color_4"/>
 
-                    <ImageView
-                        android:id="@+id/imgNote4"
-                        android:layout_width="@dimen/_21sdp"
-                        android:layout_height="@dimen/_21sdp"
-                        android:layout_gravity="center"/>
                 </FrameLayout>
 
                 <FrameLayout
@@ -133,11 +113,6 @@
                         android:layout_height="@dimen/_30sdp"
                         android:background="@drawable/note_color_5"/>
 
-                    <ImageView
-                        android:id="@+id/imgNote5"
-                        android:layout_width="@dimen/_21sdp"
-                        android:layout_height="@dimen/_21sdp"
-                        android:layout_gravity="center"/>
                 </FrameLayout>
 
                 <FrameLayout
@@ -148,12 +123,6 @@
                         android:layout_width="@dimen/_30sdp"
                         android:layout_height="@dimen/_30sdp"
                         android:background="@drawable/note_color_6"/>
-
-                    <ImageView
-                        android:id="@+id/imgNote6"
-                        android:layout_width="@dimen/_21sdp"
-                        android:layout_height="@dimen/_21sdp"
-                        android:layout_gravity="center"/>
                 </FrameLayout>
 
             </LinearLayout>

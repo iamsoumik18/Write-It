@@ -322,6 +322,9 @@
                         android:layout_marginStart="@dimen/_5sdp"
                         android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_gravity="center"
+                        android:thumbTint="@color/textColor1"
+                        android:progressTint="@color/iconTint"
+                        android:progressBackgroundTint="@color/mainBack"
                         android:layout_weight="3"/>
                 </LinearLayout>
 
