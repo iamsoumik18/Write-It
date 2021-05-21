@@ -14,24 +14,22 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_10sdp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/scroll">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/imgBack"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
-            android:src="@drawable/ic_back"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"/>
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:background="@drawable/ic_back"
+            android:layout_alignParentStart="true"/>
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/imgDone"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
-            android:src="@drawable/ic_tick"
-            android:layout_alignParentTop="true"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:background="@drawable/ic_tick"
             android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
@@ -52,7 +50,8 @@
                 android:id="@+id/etNoteTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@null"
                 android:ellipsize="end"
                 android:hint="Note Title"
@@ -62,13 +61,14 @@
                 android:fontFamily="@font/ubuntu_bold"
                 android:textColor="@color/textColor1"
                 android:textColorHint="@color/textColor2"
-                android:textSize="@dimen/_16ssp"
+                android:textSize="@dimen/_18ssp"
                 />
 
             <TextView
                 android:id="@+id/tvDateTime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:ellipsize="end"
@@ -77,7 +77,7 @@
                 android:paddingStart="@dimen/_10sdp"
                 android:textColor="@color/textColor1"
                 android:textColorHint="@color/textColor2"
-                android:textSize="@dimen/_10ssp"
+                android:textSize="@dimen/_12ssp"
                 tools:hint="dd/MM/yy hh:mm a" />
 
             <LinearLayout
@@ -115,7 +115,7 @@
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/textColor1"
                     android:textColorHint="@color/textColor2"
-                    android:textSize="@dimen/_13ssp" />
+                    android:textSize="@dimen/_15ssp" />
 
             </LinearLayout>
 
@@ -137,8 +137,8 @@
 
                 <ImageView
                     android:id="@+id/imgDelete"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
                     android:layout_marginEnd="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_alignParentEnd="true"
@@ -152,42 +152,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/layoutWebUrl"
-                app:layout_constraintEnd_toEndOf="parent"
                 android:visibility="gone"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layoutImage"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
+
                     <EditText
                         android:id="@+id/etWebLink"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:background="@null"
                         android:hint="Web Url"
                         android:fontFamily="@font/ubuntu"
                         android:inputType="textMultiLine"
-                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:padding="@dimen/_10sdp"
                         android:textColor="@color/textColor1"
                         android:textColorHint="@color/textColor2"
-                        android:textSize="@dimen/_13ssp" />
+                        android:textSize="@dimen/_15ssp" />
+
                     <ImageView
                         android:id="@+id/imgUrlDelete"
-                        android:layout_width="@dimen/_24sdp"
-                        android:layout_height="@dimen/_24sdp"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         android:visibility="gone"
                         android:src="@drawable/ic_cancel" />
-                </LinearLayout>
 
-
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -204,7 +206,7 @@
                         android:background="@android:color/transparent"
                         android:text="Cancel"
                         android:fontFamily="@font/ubuntu_medium"
-                        android:textSize="@dimen/_10ssp"
+                        android:textSize="@dimen/_12ssp"
                         android:textAllCaps="false"
                         android:textColor="@color/textColor1"
                         android:id="@+id/btnCancel"/>
@@ -215,14 +217,13 @@
                         android:background="@android:color/transparent"
                         android:text="OK"
                         android:fontFamily="@font/ubuntu_medium"
-                        android:textAllCaps="true"
-                        android:textSize="@dimen/_10ssp"
-                        android:layout_marginStart="@dimen/_5sdp"
+                        android:textSize="@dimen/_12ssp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:textColor="@color/textColor1"
                         android:id="@+id/btnOk"/>
 
-
                 </LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -239,11 +240,8 @@
                 tools:hint="Web URL"
                 android:textColor="@color/textColor1"
                 android:textColorHint="@color/textColor2"
-                android:textSize="@dimen/_13ssp"
-                android:autoLink="web"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layoutWebUrl" />
+                android:textSize="@dimen/_15ssp"
+                android:autoLink="web"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -252,16 +250,16 @@
                 android:visibility="gone"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp" >
+                android:layout_marginTop="@dimen/_10sdp"
+                android:padding="@dimen/_10sdp">
 
                 <ImageButton
                     android:id="@+id/record_btn"
                     android:background="@color/mainBack"
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_70sdp"
+                    android:layout_width="@dimen/_75sdp"
+                    android:layout_height="@dimen/_75sdp"
                     android:src="@drawable/record_btn_pause"
                     android:scaleType="fitCenter"
-                    android:layout_marginStart="@dimen/_20sdp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"/>
 
@@ -270,12 +268,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_30sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
                     app:layout_constraintLeft_toRightOf="@+id/record_btn"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
                     android:textColor="@color/textColor1"
-                    android:textSize="@dimen/_13ssp"
+                    android:textSize="@dimen/_15ssp"
                     android:fontFamily="@font/ubuntu"/>
 
 
@@ -303,18 +300,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/_10sdp"
-                    android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:orientation="horizontal">
 
                     <ImageButton
                         android:id="@+id/play_pause"
-                        android:layout_width="@dimen/_26sdp"
-                        android:layout_height="@dimen/_26sdp"
+                        android:layout_width="@dimen/_28sdp"
+                        android:layout_height="@dimen/_28sdp"
                         android:background="@android:color/transparent"
-                        android:scaleType="fitCenter"
-                        android:layout_gravity="center"
                         android:src="@drawable/player_play_btn"
-                        android:layout_weight="1"/>
+                        android:scaleType="fitCenter"
+                        android:layout_gravity="center"/>
                     <SeekBar
                         android:id="@+id/seekbar"
                         android:layout_width="match_parent"
@@ -324,8 +319,7 @@
                         android:layout_gravity="center"
                         android:thumbTint="@color/textColor1"
                         android:progressTint="@color/iconTint"
-                        android:progressBackgroundTint="@color/mainBack"
-                        android:layout_weight="3"/>
+                        android:progressBackgroundTint="@color/mainBack"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -341,6 +335,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Update"
+                        android:textSize="@dimen/_12ssp"
                         android:background="@android:color/transparent"
                         android:textColor="@color/textColor1"
                         android:fontFamily="@font/ubuntu_medium"
@@ -352,6 +347,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Delete"
+                        android:textSize="@dimen/_12ssp"
                         android:background="@android:color/transparent"
                         android:textColor="@color/textColor1"
                         android:fontFamily="@font/ubuntu_medium"
@@ -382,7 +378,7 @@
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/textColor1"
                 android:textColorHint="@color/textColor2"
-                android:textSize="@dimen/_13ssp" />
+                android:textSize="@dimen/_15ssp" />
 
         </LinearLayout>
 
@@ -391,7 +387,8 @@
     <FrameLayout
         android:id="@+id/imgMoreFrame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/cardBack"
@@ -399,8 +396,8 @@
 
         <ImageView
             android:id="@+id/imgMore"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
             android:layout_gravity="center"
             android:src="@drawable/ic_more" />
     </FrameLayout>

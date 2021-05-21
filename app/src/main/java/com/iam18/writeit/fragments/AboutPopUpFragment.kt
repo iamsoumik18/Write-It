@@ -50,13 +50,13 @@ class AboutPopUpFragment: DialogFragment() {
         }
 
         linkedIn.setOnClickListener {
-            val uri = Uri.parse("https://www.linkedin.com/in/soumik-saha-112379191")
+            val uri = Uri.parse("https://www.linkedin.com/in/iamsoumik18")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.setPackage("com.linkedin.android")
             try {
                 startActivity(intent)
             } catch (e: ActivityNotFoundException) {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/soumik-saha-112379191")))
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.linkedin.com/in/iamsoumik18")))
             }
         }
 
