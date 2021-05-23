@@ -38,14 +38,15 @@
             android:fontFamily="@font/aclonica"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lead Developer"
-            android:fontFamily="@font/ubuntu_medium"
-            android:textColor="@color/textColor1"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"/>
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:text="Lead Developer"
+            android:textColor="@color/textColor1" />
     </LinearLayout>
 
     <TextView
