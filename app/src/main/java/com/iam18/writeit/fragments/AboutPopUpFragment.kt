@@ -8,11 +8,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.iam18.writeit.R
-import kotlinx.android.synthetic.main.fragment_about_popup.*
+import com.iam18.writeit.databinding.FragmentAboutPopupBinding
 
 
 class AboutPopUpFragment: DialogFragment() {
+
+    private var _binding: FragmentAboutPopupBinding? = null
+    private val binding get() = _binding!!
 
     companion object {
         @JvmStatic
@@ -27,18 +29,19 @@ class AboutPopUpFragment: DialogFragment() {
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_about_popup, container, false)
+    ): View {
+        _binding =  FragmentAboutPopupBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        buttonclose.setOnClickListener{
+        binding.buttonClose.setOnClickListener{
             dialog?.dismiss()
         }
 
-        github.setOnClickListener {
+        binding.github.setOnClickListener {
             val uri = Uri.parse("https://www.github.com/iamsoumik18")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.setPackage("com.github.android")
@@ -49,7 +52,7 @@ class AboutPopUpFragment: DialogFragment() {
             }
         }
 
-        linkedIn.setOnClickListener {
+        binding.linkedIn.setOnClickListener {
             val uri = Uri.parse("https://www.linkedin.com/in/iamsoumik18")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.setPackage("com.linkedin.android")
@@ -60,7 +63,7 @@ class AboutPopUpFragment: DialogFragment() {
             }
         }
 
-        insta.setOnClickListener {
+        binding.insta.setOnClickListener {
             val uri = Uri.parse("http://instagram.com/_u/iiamsoumik")
             val intent = Intent(Intent.ACTION_VIEW, uri)
             intent.setPackage("com.instagram.android")
@@ -71,6 +74,11 @@ class AboutPopUpFragment: DialogFragment() {
             }
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

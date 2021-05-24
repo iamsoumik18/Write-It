@@ -23,7 +23,8 @@
             android:layout_gravity="center"
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
-            android:src="@drawable/ic_more"/>
+            android:src="@drawable/ic_more"
+            android:contentDescription="@string/bottom_sheet_button" />
     </FrameLayout>
 
     <LinearLayout
@@ -36,7 +37,8 @@
         android:padding="@dimen/_5sdp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:weightSum="6">
+        android:weightSum="6"
+        android:baselineAligned="false">
 
         <HorizontalScrollView
             android:layout_width="0dp"
@@ -57,7 +59,7 @@
                 android:id="@+id/fNote1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp">
+                android:layout_marginEnd="@dimen/_10sdp">
                 <View
                     android:layout_width="@dimen/_31sdp"
                     android:layout_height="@dimen/_31sdp"
@@ -69,7 +71,7 @@
                 android:id="@+id/fNote2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp">
+                android:layout_marginEnd="@dimen/_10sdp">
                 <View
                     android:layout_width="@dimen/_31sdp"
                     android:layout_height="@dimen/_31sdp"
@@ -81,7 +83,7 @@
                     android:id="@+id/fNote3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_10sdp">
+                    android:layout_marginEnd="@dimen/_10sdp">
                     <View
                         android:layout_width="@dimen/_31sdp"
                         android:layout_height="@dimen/_31sdp"
@@ -93,7 +95,7 @@
                     android:id="@+id/fNote4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_10sdp">
+                    android:layout_marginEnd="@dimen/_10sdp">
                     <View
                         android:layout_width="@dimen/_31sdp"
                         android:layout_height="@dimen/_31sdp"
@@ -105,7 +107,7 @@
                     android:id="@+id/fNote5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_10sdp">
+                    android:layout_marginEnd="@dimen/_10sdp">
                     <View
                         android:layout_width="@dimen/_31sdp"
                         android:layout_height="@dimen/_31sdp"
@@ -139,7 +141,7 @@
                 android:textColor="@color/textColor1"
                 android:textSize="@dimen/_14ssp"
                 android:gravity="center"
-                android:text="Pick Color"
+                android:text="@string/pick_color"
                 android:fontFamily="@font/ubuntu_medium"
                 android:maxLines="1"
                 android:ellipsize="end"
@@ -160,7 +162,8 @@
         android:gravity="center"
         android:layout_margin="@dimen/_10sdp"
         android:padding="@dimen/_5sdp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
 
 
         <ImageView
@@ -168,14 +171,15 @@
             android:layout_height="@dimen/_24sdp"
             android:src="@drawable/ic_mic"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_10sdp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/textColor1"
             android:textSize="@dimen/_14ssp"
-            android:text="Add Audio"
+            android:text="@string/add_audio"
             android:fontFamily="@font/ubuntu_medium"
             android:maxLines="1"
             android:ellipsize="end"
@@ -192,7 +196,8 @@
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:padding="@dimen/_5sdp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
 
 
         <ImageView
@@ -200,7 +205,8 @@
             android:layout_height="@dimen/_24sdp"
             android:src="@drawable/ic_image"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_10sdp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
@@ -208,7 +214,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/ubuntu_medium"
             android:maxLines="1"
-            android:text="Add Image"
+            android:text="@string/add_image"
             android:textColor="@color/textColor1"
             android:textSize="@dimen/_14ssp" />
 
@@ -223,7 +229,8 @@
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:padding="@dimen/_5sdp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
 
 
         <ImageView
@@ -231,14 +238,15 @@
             android:layout_height="@dimen/_24sdp"
             android:src="@drawable/ic_link"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_10sdp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/textColor1"
             android:textSize="@dimen/_14ssp"
-            android:text="Add URL"
+            android:text="@string/add_url"
             android:fontFamily="@font/ubuntu_medium"
             android:maxLines="1"
             android:ellipsize="end"
@@ -256,7 +264,8 @@
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
         android:padding="@dimen/_5sdp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="UseCompoundDrawables">
 
 
         <ImageView
@@ -264,14 +273,15 @@
             android:layout_height="@dimen/_24sdp"
             android:src="@drawable/ic_delete"
             android:layout_marginStart="@dimen/_5sdp"
-            android:layout_marginEnd="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_10sdp"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/textColor1"
             android:textSize="@dimen/_14ssp"
-            android:text="Delete Note"
+            android:text="@string/delete_note"
             android:fontFamily="@font/ubuntu_medium"
             android:maxLines="1"
             android:ellipsize="end"

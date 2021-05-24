@@ -54,7 +54,7 @@
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:background="@null"
                 android:ellipsize="end"
-                android:hint="Note Title"
+                android:hint="@string/note_title_hint"
                 android:inputType="text"
                 android:maxLines="1"
                 android:padding="@dimen/_10sdp"
@@ -62,7 +62,7 @@
                 android:textColor="@color/textColor1"
                 android:textColorHint="@color/textColor2"
                 android:textSize="@dimen/_18ssp"
-                />
+                tools:ignore="Autofill" />
 
             <TextView
                 android:id="@+id/tvDateTime"
@@ -75,10 +75,11 @@
                 android:fontFamily="@font/ubuntu"
                 android:maxLines="1"
                 android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp"
                 android:textColor="@color/textColor1"
                 android:textColorHint="@color/textColor2"
                 android:textSize="@dimen/_12ssp"
-                tools:hint="dd/MM/yy hh:mm a" />
+                android:hint="@string/note_date" />
 
             <LinearLayout
                 android:id="@+id/l1"
@@ -109,13 +110,14 @@
                     android:background="@null"
                     android:ellipsize="end"
                     android:fontFamily="@font/ubuntu_medium"
-                    android:hint="Note Subtitle"
+                    android:hint="@string/note_subtitle_hint"
                     android:inputType="text"
                     android:maxLines="1"
                     android:padding="@dimen/_10sdp"
                     android:textColor="@color/textColor1"
                     android:textColorHint="@color/textColor2"
-                    android:textSize="@dimen/_15ssp" />
+                    android:textSize="@dimen/_15ssp"
+                    tools:ignore="Autofill" />
 
             </LinearLayout>
 
@@ -133,7 +135,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_270sdp"
                     android:visibility="gone"
-                    android:layout_margin="@dimen/_10sdp" />
+                    android:layout_margin="@dimen/_10sdp"
+                    android:contentDescription="@string/note_image_desc" />
 
                 <ImageView
                     android:id="@+id/imgDelete"
@@ -144,7 +147,8 @@
                     android:layout_alignParentEnd="true"
                     android:visibility="gone"
                     android:layout_alignParentTop="true"
-                    android:src="@drawable/ic_delete"/>
+                    android:src="@drawable/ic_delete"
+                    android:contentDescription="@string/note_image_delete" />
 
             </RelativeLayout>
 
@@ -170,14 +174,15 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:background="@null"
-                        android:hint="Web Url"
+                        android:hint="@string/note_web_url"
                         android:fontFamily="@font/ubuntu"
                         android:inputType="textMultiLine"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:padding="@dimen/_10sdp"
                         android:textColor="@color/textColor1"
                         android:textColorHint="@color/textColor2"
-                        android:textSize="@dimen/_15ssp" />
+                        android:textSize="@dimen/_15ssp"
+                        tools:ignore="Autofill" />
 
                     <ImageView
                         android:id="@+id/imgUrlDelete"
@@ -187,7 +192,8 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:visibility="gone"
-                        android:src="@drawable/ic_cancel" />
+                        android:src="@drawable/ic_cancel"
+                        android:contentDescription="@string/note_url_delete" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -204,23 +210,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:text="Cancel"
+                        android:text="@string/cancel"
                         android:fontFamily="@font/ubuntu_medium"
                         android:textSize="@dimen/_12ssp"
                         android:textAllCaps="false"
                         android:textColor="@color/textColor1"
-                        android:id="@+id/btnCancel"/>
+                        android:id="@+id/btnCancel"
+                        style="?android:attr/buttonBarButtonStyle" />
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
-                        android:text="OK"
+                        android:text="@string/ok"
                         android:fontFamily="@font/ubuntu_medium"
                         android:textSize="@dimen/_12ssp"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:textColor="@color/textColor1"
-                        android:id="@+id/btnOk"/>
+                        android:id="@+id/btnOk"
+                        style="?android:attr/buttonBarButtonStyle" />
 
                 </LinearLayout>
 
@@ -261,7 +269,8 @@
                     android:src="@drawable/record_btn_pause"
                     android:scaleType="fitCenter"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/record_button" />
 
                 <Chronometer
                     android:id="@+id/recordTimer"
@@ -309,7 +318,8 @@
                         android:background="@android:color/transparent"
                         android:src="@drawable/player_play_btn"
                         android:scaleType="fitCenter"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/play_pause_button" />
                     <SeekBar
                         android:id="@+id/seekbar"
                         android:layout_width="match_parent"
@@ -334,25 +344,27 @@
                         android:id="@+id/player_update"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Update"
+                        android:text="@string/update"
                         android:textSize="@dimen/_12ssp"
                         android:background="@android:color/transparent"
                         android:textColor="@color/textColor1"
                         android:fontFamily="@font/ubuntu_medium"
                         android:textAllCaps="false"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        style="?android:attr/buttonBarButtonStyle" />
 
                     <Button
                         android:id="@+id/player_delete"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Delete"
+                        android:text="@string/delete"
                         android:textSize="@dimen/_12ssp"
                         android:background="@android:color/transparent"
                         android:textColor="@color/textColor1"
                         android:fontFamily="@font/ubuntu_medium"
                         android:textAllCaps="false"
-                        android:layout_weight="1"/>
+                        android:layout_weight="1"
+                        style="?android:attr/buttonBarButtonStyle" />
 
                 </LinearLayout>
 
@@ -373,7 +385,7 @@
                 android:layout_marginBottom="@dimen/_10sdp"
                 android:background="@null"
                 android:fontFamily="@font/ubuntu"
-                android:hint="Type note here..."
+                android:hint="@string/type_note_hint"
                 android:inputType="textMultiLine"
                 android:padding="@dimen/_10sdp"
                 android:textColor="@color/textColor1"
@@ -399,7 +411,8 @@
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_more" />
+            android:src="@drawable/ic_more"
+            android:contentDescription="@string/bottom_sheet_button" />
     </FrameLayout>
 
 

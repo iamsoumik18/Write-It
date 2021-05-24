@@ -21,5 +21,9 @@
     <color name="noteColorGreen">#00dc89</color>
     <color name="noteColorPurple">#bb86fc</color>
     <color name="noteColorYellow">#ffde03</color>
+
+    <color name="github">#333333</color>
+    <color name="linkedIn">#0077b5</color>
+    <color name="instagram">#e1306c</color>
     
 </resources>

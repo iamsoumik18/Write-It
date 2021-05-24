@@ -1,4 +1,32 @@
 <resources>
     <string name="app_name">Write It</string>
     <string name="app_desc">This is a note taking app where you can store, highlight, search and update your notes, add audio recording, URL and images of your comfort.</string>
+    <string name="app_logo">App logo</string>
+    <string name="dev_by">Developed By</string>
+    <string name="dev_name_short">Soumik</string>
+    <string name="dev_full_name">Soumik Saha</string>
+    <string name="dev_image">Developer\'s Image</string>
+    <string name="lead_dev_heading">Lead Developer</string>
+    <string name="about_app_heading">About the app:</string>
+    <string name="follow_me_heading">Follow me on:</string>
+    <string name="note_title_hint">Note Title</string>
+    <string name="note_subtitle_hint">Note Subtitle</string>
+    <string name="note_date">dd/MM/yy hh:mm a</string>
+    <string name="note_image_desc">Image added to the note</string>
+    <string name="note_image_delete">Delete image</string>
+    <string name="note_web_url">Web URL</string>
+    <string name="note_url_delete">Delete URL</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="record_button">Record button</string>
+    <string name="play_pause_button">Play and Pause button</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="type_note_hint">Type note here…</string>
+    <string name="bottom_sheet_button">More button</string>
+    <string name="pick_color">Pick Color</string>
+    <string name="add_audio">Add Audio</string>
+    <string name="add_image">Add Image</string>
+    <string name="add_url">Add URL</string>
+    <string name="delete_note">Delete Note</string>
 </resources>

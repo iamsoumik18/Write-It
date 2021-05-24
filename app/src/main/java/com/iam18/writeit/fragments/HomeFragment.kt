@@ -14,28 +14,30 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.iam18.writeit.R
 import com.iam18.writeit.adapter.NotesAdapter
 import com.iam18.writeit.database.NotesDatabase
+import com.iam18.writeit.databinding.FragmentHomeBinding
 import com.iam18.writeit.entities.Notes
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.launch
-import pub.devrel.easypermissions.EasyPermissions
 import java.util.*
 import kotlin.collections.ArrayList
 
 
 class HomeFragment : BaseFragment() {
 
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
     var arrNotes = ArrayList<Notes>()
     var notesAdapter: NotesAdapter = NotesAdapter()
     private var storagePermission = Manifest.permission.READ_EXTERNAL_STORAGE
     private var recordPermission = Manifest.permission.RECORD_AUDIO
-    private var REQUEST_CODE = 12
+    private var requestCode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                getActivity()?.moveTaskToBack(true);
-                getActivity()?.finish();
+                activity?.moveTaskToBack(true)
+                activity?.finish()
             }
         })
         arguments?.let {
@@ -45,8 +47,9 @@ class HomeFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding =  FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     companion object {
@@ -62,53 +65,53 @@ class HomeFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ActivityCompat.requestPermissions(requireActivity(), arrayOf(storagePermission,recordPermission), REQUEST_CODE)
+        ActivityCompat.requestPermissions(requireActivity(), arrayOf(storagePermission,recordPermission), requestCode)
 
-        recycler_view.setHasFixedSize(true)
-        recycler_view.layoutManager = StaggeredGridLayoutManager(
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.layoutManager = StaggeredGridLayoutManager(
             2,
             StaggeredGridLayoutManager.VERTICAL
         )
 
         launch {
             context?. let{
-                var notes = NotesDatabase.getDatabase(it).noteDao().getAllNotes()
-                notesAdapter!!.setData(notes)
+                val notes = NotesDatabase.getDatabase(it).noteDao().getAllNotes()
+                notesAdapter.setData(notes)
                 arrNotes = notes as ArrayList<Notes>
-                recycler_view.adapter = notesAdapter
+                binding.recyclerView.adapter = notesAdapter
             }
         }
 
-        notesAdapter!!.setOnClickListener(onClicked)
+        notesAdapter.setOnClickListener(onClicked)
 
-        abouth1.setOnClickListener{
-            var popUp = AboutPopUpFragment.newInstance()
+        binding.about.setOnClickListener{
+            val popUp = AboutPopUpFragment.newInstance()
             popUp.show(requireActivity().supportFragmentManager, "About Fragment")
         }
 
-        qaMic.setOnClickListener{
+        binding.qaMic.setOnClickListener{
             replaceFragment(CreateNoteFragment.newInstance(), "mic")
         }
 
-        qaImage.setOnClickListener {
+        binding.qaImage.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(), "img")
         }
 
-        qaLink.setOnClickListener {
+        binding.qaLink.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(), "lnk")
         }
 
-        fabBtnCreateNote.setOnClickListener {
+        binding.fabBtnCreateNote.setOnClickListener {
             replaceFragment(CreateNoteFragment.newInstance(), "ad")
         }
 
-        search_view.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
 
-                var tempArr = ArrayList<Notes>()
+                val tempArr = ArrayList<Notes>()
 
                 for (arr in arrNotes) {
-                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString())) {
+                    if (arr.title!!.lowercase(Locale.getDefault()).contains(p0.toString())) {
                         tempArr.add(arr)
                     }
                 }
@@ -124,10 +127,10 @@ class HomeFragment : BaseFragment() {
 
             override fun onQueryTextChange(p0: String?): Boolean {
 
-                var tempArr = ArrayList<Notes>()
+                val tempArr = ArrayList<Notes>()
 
                 for (arr in arrNotes) {
-                    if (arr.title!!.toLowerCase(Locale.getDefault()).contains(p0.toString())) {
+                    if (arr.title!!.lowercase(Locale.getDefault()).contains(p0.toString())) {
                         tempArr.add(arr)
                     }
                 }
@@ -142,11 +145,11 @@ class HomeFragment : BaseFragment() {
     }
 
     private val onClicked = object :NotesAdapter.OnItemClickListener{
-        override fun onClicked(notesId: Int) {
+        override fun onClicked(noteId: Int) {
 
-            var fragment :Fragment
-            var bundle = Bundle()
-            bundle.putInt("noteId", notesId)
+            val fragment :Fragment
+            val bundle = Bundle()
+            bundle.putInt("noteId", noteId)
             fragment = CreateNoteFragment.newInstance()
             fragment.arguments = bundle
 
@@ -157,13 +160,18 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun replaceFragment(fragment: Fragment, st: String){
-        val fragmentTransition = activity!!.supportFragmentManager.beginTransaction()
+        val fragmentTransition = requireActivity().supportFragmentManager.beginTransaction()
 
         val bdl = Bundle()
         bdl.putString("qaCall", st)
         fragment.arguments = bdl
 
         fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName).commit()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

@@ -12,11 +12,14 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.iam18.writeit.R
-import kotlinx.android.synthetic.main.fragment_bottom_sheet.*
+import com.iam18.writeit.databinding.FragmentBottomSheetBinding
 
 class NoteBottomSheetFragment: BottomSheetDialogFragment() {
 
-    var selectedColor = "null"
+    private var _binding: FragmentBottomSheetBinding? = null
+    private val binding get() = _binding!!
+
+    private var selectedColor = "null"
 
     companion object {
         var noteId = -1
@@ -29,8 +32,7 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
         }
     }
 
-
-    @SuppressLint("RestrictedApi")
+    @SuppressLint("RestrictedApi", "InflateParams")
     override fun setupDialog(dialog: Dialog, style: Int) {
         super.setupDialog(dialog, style)
         val view = LayoutInflater.from(context).inflate(R.layout.fragment_bottom_sheet,null)
@@ -41,34 +43,12 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
         val behavior = param.behavior
 
         if (behavior is BottomSheetBehavior<*>){
-            behavior.setBottomSheetCallback(object  : BottomSheetBehavior.BottomSheetCallback(){
+            behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback(){
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
                     dismiss()
                 }
 
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
-                    var state = ""
-                    when (newState) {
-                        BottomSheetBehavior.STATE_DRAGGING -> {
-                            state = "DRAGGING"
-                        }
-                        BottomSheetBehavior.STATE_SETTLING -> {
-                            state = "SETTLING"
-                        }
-                        BottomSheetBehavior.STATE_EXPANDED -> {
-                            state = "EXPANDED"
-                        }
-                        BottomSheetBehavior.STATE_COLLAPSED -> {
-                            state = "COLLAPSED"
-                        }
-
-                        BottomSheetBehavior.STATE_HIDDEN -> {
-                            state = "HIDDEN"
-                            dismiss()
-                            behavior.state = BottomSheetBehavior.STATE_COLLAPSED
-                        }
-
-                    }
                 }
 
             })
@@ -82,24 +62,25 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_bottom_sheet,container,false)
+    ): View {
+        _binding =  FragmentBottomSheetBinding.inflate(inflater, container, false)
+        return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (noteId != -1){
-            layoutDeleteNote.visibility = View.VISIBLE
+            binding.layoutDeleteNote.visibility = View.VISIBLE
         }else{
-            layoutDeleteNote.visibility = View.GONE
+            binding.layoutDeleteNote.visibility = View.GONE
         }
         setListener()
     }
 
     private fun setListener(){
 
-        fNote1.setOnClickListener {
+        binding.fNote1.setOnClickListener {
 
             selectedColor = "#ff7f50"
 
@@ -111,7 +92,7 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
 
         }
 
-        fNote2.setOnClickListener {
+        binding.fNote2.setOnClickListener {
 
             selectedColor = "#ff493e"
 
@@ -123,7 +104,7 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
 
         }
 
-        fNote3.setOnClickListener {
+        binding.fNote3.setOnClickListener {
 
             selectedColor = "#3c50ff"
 
@@ -135,7 +116,7 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
 
         }
 
-        fNote4.setOnClickListener {
+        binding.fNote4.setOnClickListener {
 
             selectedColor = "#00dc89"
 
@@ -147,7 +128,7 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
 
         }
 
-        fNote5.setOnClickListener {
+        binding.fNote5.setOnClickListener {
 
             selectedColor = "#bb86fc"
 
@@ -158,7 +139,7 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
             dismiss()
         }
 
-        fNote6.setOnClickListener {
+        binding.fNote6.setOnClickListener {
 
             selectedColor = "#ffde03"
 
@@ -169,37 +150,42 @@ class NoteBottomSheetFragment: BottomSheetDialogFragment() {
             dismiss()
         }
 
-        imgMoreFrame.setOnClickListener {
+        binding.imgMoreFrame.setOnClickListener {
             dismiss()
         }
 
-        layoutImage.setOnClickListener{
+        binding.layoutImage.setOnClickListener{
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action","Image")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
             dismiss()
         }
 
-        layoutWebUrl.setOnClickListener{
+        binding.layoutWebUrl.setOnClickListener{
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action","WebUrl")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
             dismiss()
         }
 
-        layoutAudio.setOnClickListener {
+        binding.layoutAudio.setOnClickListener {
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action","Audio")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
             dismiss()
         }
 
-        layoutDeleteNote.setOnClickListener {
+        binding.layoutDeleteNote.setOnClickListener {
             val intent = Intent("bottom_sheet_action")
             intent.putExtra("action","DeleteNote")
             LocalBroadcastManager.getInstance(requireContext()).sendBroadcast(intent)
             dismiss()
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

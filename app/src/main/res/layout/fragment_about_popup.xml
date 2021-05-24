@@ -3,138 +3,169 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@color/mainBack"
     android:padding="5dp"
     android:layout_gravity="center"
     tools:context=".activities.MainActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/ic_close"
-        android:layout_gravity="end"
-        android:gravity="center"
-        android:id="@+id/buttonclose"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="end">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ic_close"
+            android:id="@+id/buttonClose"/>
+
+    </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_20sdp">
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/myimage"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"/>
+            android:src="@drawable/my_image"
+            android:contentDescription="@string/dev_image"
+            android:layout_gravity="center"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Soumik Saha"
+            android:text="@string/dev_full_name"
             android:textSize="27sp"
             android:textStyle="bold"
             android:textColor="@color/textColor1"
             android:fontFamily="@font/aclonica"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:layout_marginTop="5dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/ubuntu_medium"
-            android:text="Lead Developer"
+            android:text="@string/lead_dev_heading"
             android:textColor="@color/textColor1" />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_gravity="center">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/textColor1"
         android:textStyle="bold"
-        android:layout_marginTop="35dp"
-        android:text="About the app:"
+        android:text="@string/about_app_heading"
         android:fontFamily="@font/ubuntu_medium"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="@color/textColor1"
         android:layout_gravity="center"
+        android:textColor="@color/textColor1"
         android:fontFamily="@font/ubuntu"
         android:text="@string/app_desc"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_gravity="center">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/textColor1"
-        android:layout_marginTop="35dp"
         android:textStyle="bold"
-        android:text="Follow me on:"
+        android:text="@string/follow_me_heading"
         android:fontFamily="@font/ubuntu_medium"
         android:layout_gravity="center_horizontal"/>
 
     <LinearLayout
         android:layout_marginTop="15dp"
+        android:layout_marginBottom="@dimen/_10sdp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="3">
+        android:layout_gravity="center"
+        android:weightSum="3"
+        android:baselineAligned="false">
+
         <LinearLayout
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_weight="1"
-            android:background="#333333"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:weightSum="1">
+            android:background="@drawable/background_github"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/github"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
                 android:background="@drawable/github"
-                android:layout_margin="@dimen/_15sdp"
+                android:layout_margin="@dimen/_10sdp"
                 />
 
         </LinearLayout>
         <LinearLayout
-            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
             android:orientation="vertical"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:background="#0077b5"
-            android:layout_height="wrap_content"
-            android:weightSum="1">
+            android:gravity="center"
+            android:background="@drawable/background_linkedin">
 
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/linkedIn"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
-                android:layout_margin="@dimen/_15sdp"
+                android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/linkedin"/>
 
         </LinearLayout>
         <LinearLayout
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:background="#e1306c"
             android:layout_height="wrap_content"
-            android:weightSum="1">
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/background_instagram">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/insta"
                 android:layout_width="@dimen/_60sdp"
                 android:layout_height="@dimen/_60sdp"
-                android:layout_margin="@dimen/_15sdp"
+                android:layout_margin="@dimen/_10sdp"
                 android:background="@drawable/instagram"/>
         </LinearLayout>
+    </LinearLayout>
     </LinearLayout>
 
 

@@ -7,24 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.iam18.writeit.R
+import com.iam18.writeit.databinding.ItemNotesBinding
 import com.iam18.writeit.entities.Notes
-import kotlinx.android.synthetic.main.item_notes.view.*
 
 
-class NotesAdapter():
+class NotesAdapter :
     RecyclerView.Adapter<NotesAdapter.NotesViewHolder>(){
-    var listener:OnItemClickListener? = null
-    var arrList = ArrayList<Notes>()
+    private var listener:OnItemClickListener? = null
+    private var arrList = ArrayList<Notes>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
-        return NotesViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.item_notes,
-                parent,
-                false
-            )
-        )
+        return NotesViewHolder(ItemNotesBinding.inflate(LayoutInflater.from(parent.context),parent,false))
     }
 
     override fun getItemCount(): Int {
@@ -33,24 +26,24 @@ class NotesAdapter():
 
     @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
-        holder.itemView.tvTitle.text = arrList[position].title
-        holder.itemView.tvSubTitle.text = arrList[position].subTitle
-        holder.itemView.tvDateTime.text = arrList[position].dateTime
+        holder.binding.tvTitle.text = arrList[position].title
+        holder.binding.tvSubTitle.text = arrList[position].subTitle
+        holder.binding.tvDateTime.text = arrList[position].dateTime
 
         if (arrList[position].color != "null"){
-            holder.itemView.cardView.setBackgroundColor(Color.parseColor(arrList[position].color))
+            holder.binding.cardView.setBackgroundColor(Color.parseColor(arrList[position].color))
         }else{
-            holder.itemView.cardView.setBackgroundColor(Color.TRANSPARENT)
+            holder.binding.cardView.setBackgroundColor(Color.TRANSPARENT)
         }
 
         if (arrList[position].imgPath != null){
-            Glide.with(holder.itemView.context).load(arrList[position].imgPath).override(1280,720).into(holder.itemView.imgNote)
-            holder.itemView.imgNote.visibility = View.VISIBLE
+            Glide.with(holder.itemView.context).load(arrList[position].imgPath).override(1280,720).into(holder.binding.imgNote)
+            holder.binding.imgNote.visibility = View.VISIBLE
         }else{
-            holder.itemView.imgNote.visibility = View.GONE
+            holder.binding.imgNote.visibility = View.GONE
         }
 
-        holder.itemView.cardView.setOnClickListener {
+        holder.binding.cardView.setOnClickListener {
             listener!!.onClicked(arrList[position].id!!)
         }
 
@@ -64,9 +57,7 @@ class NotesAdapter():
         listener = listener1
     }
 
-    class NotesViewHolder(view: View) : RecyclerView.ViewHolder(view){
-
-    }
+    class NotesViewHolder(val binding: ItemNotesBinding) : RecyclerView.ViewHolder(binding.root)
 
     interface OnItemClickListener{
         fun onClicked(noteId: Int)

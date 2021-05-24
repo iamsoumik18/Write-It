@@ -27,7 +27,7 @@
             app:layout_constraintStart_toStartOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/abouth1"
+            android:id="@+id/about"
             android:layout_width="@dimen/_25sdp"
             android:layout_height="@dimen/_25sdp"
             android:background="@drawable/ic_info"
@@ -129,6 +129,7 @@
         app:backgroundTint="@color/appTheme"
         app:tint="@color/iconTint"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
