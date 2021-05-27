@@ -61,7 +61,8 @@
             android:iconifiedByDefault="false"
             android:queryBackground="@android:color/transparent"
             android:theme="@style/ThemeOverlay.Search"
-            android:searchIcon="@drawable/ic_search" />
+            android:searchIcon="@drawable/ic_search"
+            android:focusable="false"/>
 
     </LinearLayout>
 

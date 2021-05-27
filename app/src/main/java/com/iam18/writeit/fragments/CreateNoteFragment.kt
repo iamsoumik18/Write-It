@@ -348,13 +348,6 @@ class CreateNoteFragment : BaseFragment() {
                     notes.webLink = webLink
                     context?.let {
                         NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
-                        binding.etNoteTitle.setText("")
-                        binding.etNoteSubTitle.setText("")
-                        binding.etNoteDesc.setText("")
-                        binding.layoutImage.visibility = View.GONE
-                        binding.imgNote.visibility = View.GONE
-                        binding.tvWebLink.visibility = View.GONE
-                        binding.layoutPlayer.visibility = View.GONE
                         Toast.makeText(context, "Note Added.", Toast.LENGTH_SHORT).show()
                         requireActivity().supportFragmentManager.popBackStack()
                     }
@@ -377,15 +370,7 @@ class CreateNoteFragment : BaseFragment() {
                 notes.imgPath = selectedImagePath
                 notes.webLink = webLink
                 notes.audioPath = selectedAudioPath
-
                 NotesDatabase.getDatabase(it).noteDao().updateNote(notes)
-                binding.etNoteTitle.setText("")
-                binding.etNoteSubTitle.setText("")
-                binding.etNoteDesc.setText("")
-                binding.layoutImage.visibility = View.GONE
-                binding.imgNote.visibility = View.GONE
-                binding.tvWebLink.visibility = View.GONE
-                binding.layoutPlayer.visibility = View.GONE
                 Toast.makeText(context, "Note Updated.", Toast.LENGTH_SHORT).show()
                 requireActivity().supportFragmentManager.popBackStack()
             }

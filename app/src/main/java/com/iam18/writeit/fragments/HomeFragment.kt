@@ -154,6 +154,7 @@ class HomeFragment : BaseFragment() {
             fragment.arguments = bundle
 
             val fragmentTransition = activity!!.supportFragmentManager.beginTransaction()
+            fragmentTransition.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_right, R.anim.enter_from_right,R.anim.exit_to_right)
             fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName).commit()
         }
 
@@ -165,6 +166,8 @@ class HomeFragment : BaseFragment() {
         val bdl = Bundle()
         bdl.putString("qaCall", st)
         fragment.arguments = bdl
+
+        fragmentTransition.setCustomAnimations(R.anim.enter_from_right,R.anim.exit_to_right, R.anim.enter_from_right,R.anim.exit_to_right)
 
         fragmentTransition.replace(R.id.frame_layout, fragment).addToBackStack(fragment.javaClass.simpleName).commit()
     }

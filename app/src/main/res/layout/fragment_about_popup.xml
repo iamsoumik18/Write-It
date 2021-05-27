@@ -5,8 +5,9 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/mainBack"
-    android:padding="5dp"
+    android:background="@drawable/background_about_popup"
+    android:padding="@dimen/_5sdp"
+    android:layout_margin="@dimen/_5sdp"
     android:layout_gravity="center"
     tools:context=".activities.MainActivity">
 

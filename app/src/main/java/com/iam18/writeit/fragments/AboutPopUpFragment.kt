@@ -2,12 +2,17 @@ package com.iam18.writeit.fragments
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.fragment.app.DialogFragment
+import com.iam18.writeit.R
 import com.iam18.writeit.databinding.FragmentAboutPopupBinding
 
 
@@ -15,6 +20,8 @@ class AboutPopUpFragment: DialogFragment() {
 
     private var _binding: FragmentAboutPopupBinding? = null
     private val binding get() = _binding!!
+
+    private val DialogFragment.window: Window? get() = dialog?.window
 
     companion object {
         @JvmStatic
@@ -30,12 +37,21 @@ class AboutPopUpFragment: DialogFragment() {
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
+        dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         _binding =  FragmentAboutPopupBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setupSlideFromBottomAnimation()
+
+        dialog?.setOnShowListener {
+            Handler().post {
+                setupSlideToBottomAnimation()
+            }
+        }
 
         binding.buttonClose.setOnClickListener{
             dialog?.dismiss()
@@ -74,6 +90,14 @@ class AboutPopUpFragment: DialogFragment() {
             }
         }
 
+    }
+
+    private fun DialogFragment.setupSlideFromBottomAnimation() {
+        window?.setWindowAnimations(R.style.SlideFromBottom)
+    }
+
+    private fun DialogFragment.setupSlideToBottomAnimation() {
+        window?.setWindowAnimations(R.style.SlideToBottom)
     }
 
     override fun onDestroyView() {
