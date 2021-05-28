@@ -101,7 +101,7 @@ class CreateNoteFragment : BaseFragment() {
                     binding.etNoteDesc.setText(notes.noteText)
                     if (notes.imgPath != ""){
                         selectedImagePath = notes.imgPath!!
-                        Glide.with(view).load(notes.imgPath).into(binding.imgNote)
+                        Glide.with(view).load(notes.imgPath).override(1280, 720).into(binding.imgNote)
                         binding.layoutImage.visibility = View.VISIBLE
                         binding.imgNote.visibility = View.VISIBLE
                         binding.imgDelete.visibility = View.VISIBLE

@@ -67,18 +67,21 @@ class HomeFragment : BaseFragment() {
 
         ActivityCompat.requestPermissions(requireActivity(), arrayOf(storagePermission,recordPermission), requestCode)
 
-        binding.recyclerView.setHasFixedSize(true)
-        binding.recyclerView.layoutManager = StaggeredGridLayoutManager(
-            2,
-            StaggeredGridLayoutManager.VERTICAL
-        )
-
         launch {
             context?. let{
                 val notes = NotesDatabase.getDatabase(it).noteDao().getAllNotes()
-                notesAdapter.setData(notes)
-                arrNotes = notes as ArrayList<Notes>
-                binding.recyclerView.adapter = notesAdapter
+                if(notes.isNotEmpty()){
+                    notesAdapter.setData(notes)
+                    arrNotes = notes as ArrayList<Notes>
+                    binding.recyclerView.visibility = View.VISIBLE
+                    binding.alternate.visibility = View.GONE
+                    binding.recyclerView.setHasFixedSize(true)
+                    binding.recyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+                    binding.recyclerView.adapter = notesAdapter
+                }else{
+                    binding.recyclerView.visibility = View.GONE
+                    binding.alternate.visibility = View.VISIBLE
+                }
             }
         }
 

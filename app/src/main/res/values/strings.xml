@@ -9,6 +9,7 @@
     <string name="lead_dev_heading">Lead Developer</string>
     <string name="about_app_heading">About the app:</string>
     <string name="follow_me_heading">Follow me on:</string>
+    <string name="recycler_text">Notes you add appear here</string>
     <string name="note_title_hint">Note Title</string>
     <string name="note_subtitle_hint">Note Subtitle</string>
     <string name="note_date">dd/MM/yy hh:mm a</string>
