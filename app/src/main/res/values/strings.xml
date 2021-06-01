@@ -30,4 +30,7 @@
     <string name="add_image">Add Image</string>
     <string name="add_url">Add URL</string>
     <string name="delete_note">Delete Note</string>
+    <string name="mic">Mic</string>
+    <string name="picture">Picture</string>
+    <string name="link">Link</string>
 </resources>

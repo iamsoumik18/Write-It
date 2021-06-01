@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/mainBack"
+    android:orientation="vertical"
     tools:context=".activities.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topPanel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv1"
@@ -43,9 +43,6 @@
         android:id="@+id/topPanel2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/topPanel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical">
 
         <SearchView
@@ -66,98 +63,76 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/recycler_view_holder"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/topPanel2"
-        app:layout_constraintBottom_toTopOf="@id/bottomPanel"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:visibility="gone"
-            android:id="@+id/recycler_view"
+            <LinearLayout
+                android:id="@+id/recycler_view_holder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:visibility="gone"
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    tools:listitem="@layout/item_notes"/>
+
+                <LinearLayout
+                    android:id="@+id/alternate"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
+                        android:src="@drawable/ic_sticky_note"
+                        tools:ignore="ContentDescription"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/recycler_text"
+                        android:textColor="@color/textColor3"
+                        android:fontFamily="@font/ubuntu_medium"
+                        android:textSize="@dimen/_15ssp"
+                        android:layout_marginTop="@dimen/_10sdp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottomAppBar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            tools:listitem="@layout/item_notes"/>
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:fabAlignmentMode="end"
+            app:hideOnScroll="true"
+            app:fabCradleRoundedCornerRadius="@dimen/_10sdp"
+            app:fabCradleMargin="@dimen/_6sdp"
+            android:backgroundTint="@color/cardBack"
+            app:menu="@menu/bottom_nav_menu"/>
 
-        <LinearLayout
-            android:id="@+id/alternate"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center"
-            tools:ignore="UseCompoundDrawables">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabBtnCreateNote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add"
+            app:fabCustomSize="@dimen/_48sdp"
+            app:backgroundTint="@color/appTheme"
+            app:tint="@color/iconTint"
+            app:layout_anchor="@id/bottomAppBar"
+            tools:ignore="ContentDescription" />
 
-            <ImageView
-                android:layout_width="@dimen/_80sdp"
-                android:layout_height="@dimen/_80sdp"
-                android:src="@drawable/ic_sticky_note"
-                tools:ignore="ContentDescription"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/recycler_text"
-                android:textColor="@color/textColor3"
-                android:fontFamily="@font/ubuntu_medium"
-                android:textSize="@dimen/_15ssp"
-                android:layout_marginTop="@dimen/_10sdp"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bottomPanel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/cardBack"
-        android:padding="@dimen/_10sdp"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/qaMic"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:layout_marginStart="@dimen/_7sdp"
-            android:background="@drawable/ic_mic" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/qaImage"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:background="@drawable/ic_image"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_20sdp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/qaLink"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:background="@drawable/ic_link" />
-
-
-    </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabBtnCreateNote"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:fabCustomSize="@dimen/_49sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:src="@drawable/ic_add"
-        app:backgroundTint="@color/appTheme"
-        app:tint="@color/iconTint"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="ContentDescription" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

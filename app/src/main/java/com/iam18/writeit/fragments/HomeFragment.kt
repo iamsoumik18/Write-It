@@ -92,16 +92,24 @@ class HomeFragment : BaseFragment() {
             popUp.show(requireActivity().supportFragmentManager, "About Fragment")
         }
 
-        binding.qaMic.setOnClickListener{
-            replaceFragment(CreateNoteFragment.newInstance(), "mic")
-        }
+        binding.bottomAppBar.setOnMenuItemClickListener { item->
+            when(item.itemId){
+                R.id.qaMic-> {
+                    replaceFragment(CreateNoteFragment.newInstance(), "mic")
+                    true
+                }
+                R.id.qaImage->{
+                    replaceFragment(CreateNoteFragment.newInstance(), "img")
+                    true
+                }
+                R.id.qaLink->{
+                    replaceFragment(CreateNoteFragment.newInstance(), "lnk")
+                    true
+                }
+                else->false
 
-        binding.qaImage.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(), "img")
-        }
 
-        binding.qaLink.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(), "lnk")
+            }
         }
 
         binding.fabBtnCreateNote.setOnClickListener {
