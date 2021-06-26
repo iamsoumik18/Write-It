@@ -64,6 +64,13 @@
                         android:layout_width="@dimen/_31sdp"
                         android:layout_height="@dimen/_31sdp"
                         android:background="@drawable/note_color_1"/>
+                    <ImageView
+                        android:id="@+id/imgNote1"
+                        android:layout_width="@dimen/_31sdp"
+                        android:layout_height="@dimen/_31sdp"
+                        android:layout_gravity="center"
+                        app:tint="@color/iconTint"
+                        tools:ignore="ContentDescription" />
 
                 </FrameLayout>
 
@@ -76,6 +83,13 @@
                         android:layout_width="@dimen/_31sdp"
                         android:layout_height="@dimen/_31sdp"
                         android:background="@drawable/note_color_2"/>
+                    <ImageView
+                        android:id="@+id/imgNote2"
+                        android:layout_width="@dimen/_31sdp"
+                        android:layout_height="@dimen/_31sdp"
+                        android:layout_gravity="center"
+                        app:tint="@color/iconTint"
+                        tools:ignore="ContentDescription" />
 
                 </FrameLayout>
 
@@ -88,6 +102,13 @@
                         android:layout_width="@dimen/_31sdp"
                         android:layout_height="@dimen/_31sdp"
                         android:background="@drawable/note_color_3"/>
+                    <ImageView
+                        android:id="@+id/imgNote3"
+                        android:layout_width="@dimen/_31sdp"
+                        android:layout_height="@dimen/_31sdp"
+                        android:layout_gravity="center"
+                        app:tint="@color/iconTint"
+                        tools:ignore="ContentDescription" />
 
                 </FrameLayout>
 
@@ -100,6 +121,13 @@
                         android:layout_width="@dimen/_31sdp"
                         android:layout_height="@dimen/_31sdp"
                         android:background="@drawable/note_color_4"/>
+                    <ImageView
+                        android:id="@+id/imgNote4"
+                        android:layout_width="@dimen/_31sdp"
+                        android:layout_height="@dimen/_31sdp"
+                        android:layout_gravity="center"
+                        app:tint="@color/iconTint"
+                        tools:ignore="ContentDescription" />
 
                 </FrameLayout>
 
@@ -112,6 +140,13 @@
                         android:layout_width="@dimen/_31sdp"
                         android:layout_height="@dimen/_31sdp"
                         android:background="@drawable/note_color_5"/>
+                    <ImageView
+                        android:id="@+id/imgNote5"
+                        android:layout_width="@dimen/_31sdp"
+                        android:layout_height="@dimen/_31sdp"
+                        android:layout_gravity="center"
+                        app:tint="@color/iconTint"
+                        tools:ignore="ContentDescription" />
 
                 </FrameLayout>
 
@@ -123,6 +158,13 @@
                         android:layout_width="@dimen/_31sdp"
                         android:layout_height="@dimen/_31sdp"
                         android:background="@drawable/note_color_6"/>
+                    <ImageView
+                        android:id="@+id/imgNote6"
+                        android:layout_width="@dimen/_31sdp"
+                        android:layout_height="@dimen/_31sdp"
+                        android:layout_gravity="center"
+                        app:tint="@color/iconTint"
+                        tools:ignore="ContentDescription" />
                 </FrameLayout>
 
             </LinearLayout>

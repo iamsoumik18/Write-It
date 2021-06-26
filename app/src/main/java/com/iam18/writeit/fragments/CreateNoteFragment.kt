@@ -163,7 +163,7 @@ class CreateNoteFragment : BaseFragment() {
         }
 
         binding.imgMoreFrame.setOnClickListener{
-            val noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId)
+            val noteBottomSheetFragment = NoteBottomSheetFragment.newInstance(noteId,selectedColor)
             noteBottomSheetFragment.show(requireActivity().supportFragmentManager, "Note Bottom Sheet Fragment")
         }
 
